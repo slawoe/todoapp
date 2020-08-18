@@ -14,14 +14,19 @@ function App() {
   }, []);
 
   function addToDo() {
-    postToDo().then(doFetch);
+    postToDo("Hello", "zweiteZeile", "Dritte").then(doFetch);
   }
   return (
     <div>
       {toDos?.map((todo) => (
         <h3 key={todo.id}>{todo.task}</h3>
       ))}
-      <button onClick={addToDo}>Click</button>
+      <form>
+        <input placeholder="Task" />
+        <input placeholder="Autor" />
+        <input placeholder="Completed? true or false" />
+        <button onClick={addToDo}>Click</button>
+      </form>
     </div>
   );
 }
