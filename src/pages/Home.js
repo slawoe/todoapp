@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import fetchToDos from "../api/fetchToDos";
-import { BrowserRouter as Link } from "react-router-dom";
 
 function Home() {
   const [toDos, setToDos] = useState(null);
@@ -17,7 +16,6 @@ function Home() {
   //   }
   return (
     <div>
-      <Link to="/add">Add Task</Link>
       {toDos?.map((todo) => (
         <h3 key={todo.id}>{todo.task}</h3>
       ))}

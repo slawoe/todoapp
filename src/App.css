@@ -2,9 +2,60 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html {
   box-sizing: border-box;
   font-size: 14px;
+}
+
+.mainBody {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 10% auto 5%;
+}
+
+body header {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background: blue;
+  color: white;
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  margin: 2em 0;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  display: flex;
+  font-size: 0.8em;
+  justify-content: center;
+  align-items: space-between;
+}
+
+footer {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  width: 100vw;
+  color: white;
+  background: blue;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer :any-link {
+  color: white;
+  text-align: center;
+  margin: 1em;
 }
