@@ -3,13 +3,8 @@ import { Link } from "react-router-dom";
 import postToDo from "../api/postToDo";
 
 function AddTask() {
-  const [task, setTask] = useState(null);
-  const [author, setAuthor] = useState(null);
-  const [completed, setCompleted] = useState(null);
-
-  function addToDo() {
-    postToDo(task, author, completed);
-  }
+  const [task, setTask] = useState("");
+  const [author, setAuthor] = useState("");
 
   function taskChange(task) {
     setTask(task.target.value);
@@ -17,32 +12,30 @@ function AddTask() {
   function authorChange(author) {
     setAuthor(author.target.value);
   }
-  function completedChange(completed) {
-    setCompleted(completed.target.value);
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const todo = { task, author };
+    await postToDo(todo);
+    setTask("");
+    setAuthor("");
   }
 
   return (
     <div>
       <Link to="/">Tasks</Link>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
           Task:
-          <input type="text" name="task" onChange={taskChange} />
+          <input placeholder="Task" value={task} onChange={taskChange} />
         </label>
         <label>
           Author:
-          <input type="text" name="author" onChange={authorChange} />
+          <input placeholder="Author" value={author} onChange={authorChange} />
         </label>
-        <label>
-          Completed:
-          <input type="text" name="completed" onChange={completedChange} />
-        </label>
-        <input type="submit" value="Submit" onClick={addToDo} />
+        <input type="submit" value="Submit" />
       </form>
     </div>
   );
 }
 
 export default AddTask;
-
-// postToDo("Hello", "zweiteZeile", "Dritte").then(doFetch);

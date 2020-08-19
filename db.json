@@ -23,18 +23,6 @@
       "task": "Urlaub nach dem Bootcamp",
       "author": "Slawo",
       "completed": false
-    },
-    {
-      "task": "Hallo",
-      "author": "liebe",
-      "completed": "Welt",
-      "id": 5
-    },
-    {
-      "task": "sdaasd",
-      "author": null,
-      "completed": null,
-      "id": 6
     }
   ]
 }
