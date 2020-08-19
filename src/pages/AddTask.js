@@ -6,6 +6,7 @@ function AddTask() {
   const [task, setTask] = useState("");
   const [author, setAuthor] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   function taskChange(task) {
     setTask(task.target.value);
@@ -16,10 +17,19 @@ function AddTask() {
   async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
-    const todo = { task, author };
-    await postToDo(todo);
-    setTask("");
-    setAuthor("");
+    setError(false);
+    const todo = { task, author, createdAt: Date.now() };
+    try {
+      await postToDo(todo);
+      setTask("");
+      setAuthor("");
+    } catch (error) {
+      console.error(error);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+
     setLoading(false);
   }
 
@@ -39,6 +49,7 @@ function AddTask() {
           value="Submit"
           disabled={!task || !author || loading}
         />
+        {error && <p>Something bad happened 🤣. Please try again.</p>}
       </form>
     </div>
   );
