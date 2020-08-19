@@ -31,7 +31,7 @@ function AddTask() {
           Author:
           <input placeholder="Author" value={author} onChange={authorChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" disabled={!task || !author} />
       </form>
     </div>
   );
