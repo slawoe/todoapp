@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import postToDo from "../api/postToDo";
+import "./AddTask.css";
 
 function AddTask() {
   const [task, setTask] = useState("");
@@ -22,8 +22,7 @@ function AddTask() {
 
   return (
     <div>
-      <Link to="/">Tasks</Link>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="addTask--main">
         <label>
           Task:
           <input placeholder="Task" value={task} onChange={taskChange} />
