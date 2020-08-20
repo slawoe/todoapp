@@ -1,18 +1,25 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./components/Home";
 import AddTask from "./pages/AddTask";
-import Header from "./pages/Header";
-import Footer from "./pages/Footer";
+import Header from "../src/components/Header";
+import Footer from "./components/Footer";
+import styled from "@emotion/styled";
+
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 10% 1fr 10%;
+  grid-template-columns: 5% auto 5%;
+`;
 
 function App() {
   return (
     <Router>
-      <div className="mainBody">
-        <header>
-          <Header />
-        </header>
+      <Container>
+        <Header />
         <main>
           <Switch>
             <Route path="/add">
@@ -23,10 +30,8 @@ function App() {
             </Route>
           </Switch>
         </main>
-        <footer>
-          <Footer />
-        </footer>
-      </div>
+        <Footer />
+      </Container>
     </Router>
   );
 }

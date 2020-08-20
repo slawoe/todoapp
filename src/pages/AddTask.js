@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import postToDo from "../api/postToDo";
-import "./AddTask.css";
+import styled from "@emotion/styled";
 
 function AddTask() {
   const [task, setTask] = useState("");
   const [author, setAuthor] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const Label = styled.label`
+    color: black;
+  `;
+  const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  `;
+  const Input = styled.input`
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+  `;
 
   function taskChange(task) {
     setTask(task.target.value);
@@ -34,24 +49,24 @@ function AddTask() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="addTask--main">
-        <label>
+    <>
+      <Form onSubmit={handleSubmit} className="addTask--main">
+        <Label>
           Task:
-          <input placeholder="Task" value={task} onChange={taskChange} />
-        </label>
-        <label>
+          <Input placeholder="Task" value={task} onChange={taskChange} />
+        </Label>
+        <Label>
           Author:
-          <input placeholder="Author" value={author} onChange={authorChange} />
-        </label>
-        <input
+          <Input placeholder="Author" value={author} onChange={authorChange} />
+        </Label>
+        <Input
           type="submit"
           value="Submit"
           disabled={!task || !author || loading}
         />
         {error && <p>Something bad happened 🤣. Please try again.</p>}
-      </form>
-    </div>
+      </Form>
+    </>
   );
 }
 
