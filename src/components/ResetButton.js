@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 
 const ReseterButton = styled.button`
@@ -10,7 +9,7 @@ const ReseterButton = styled.button`
   margin: 2px;
 `;
 
-function ResetButton(props) {
+function ResetButton() {
   return <ReseterButton>x</ReseterButton>;
 }
 
